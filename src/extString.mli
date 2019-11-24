@@ -179,11 +179,14 @@ module String :
   val length : string -> int
   val get : string -> int -> char
   val set : Bytes.t -> int -> char -> unit
+    [@@ocaml.deprecated "Use Bytes.set instead."]
   val create : int -> Bytes.t
+    [@@ocaml.deprecated "Use Bytes.create instead."]
   val make : int -> char -> string
-  val copy : string -> string
+  val copy : string -> string [@@ocaml.deprecated]
   val sub : string -> int -> int -> string
   val fill : Bytes.t -> int -> int -> char -> unit
+    [@@ocaml.deprecated "Use Bytes.fill instead."]
   val blit : string -> int -> Bytes.t -> int -> int -> unit
   val concat : string -> string list -> string
   val iter : (char -> unit) -> string -> unit
@@ -200,9 +203,13 @@ module String :
   val contains_from : string -> int -> char -> bool
   val rcontains_from : string -> int -> char -> bool
   val uppercase : string -> string
+    [@@ocaml.deprecated "Use String.uppercase_ascii instead."]
   val lowercase : string -> string
+    [@@ocaml.deprecated "Use String.lowercase_ascii instead."]
   val capitalize : string -> string
+    [@@ocaml.deprecated "Use String.capitalize_ascii instead."]
   val uncapitalize : string -> string
+    [@@ocaml.deprecated "Use String.uncapitalize_ascii instead."]
 
   type t = string
   val compare : t -> t -> int
@@ -219,7 +226,9 @@ module String :
 
   external unsafe_get : string -> int -> char = "%string_unsafe_get"
   val unsafe_set : Bytes.t -> int -> char -> unit
+    [@@ocaml.deprecated]
   val unsafe_blit : string -> int -> Bytes.t -> int -> int -> unit
   val unsafe_fill : Bytes.t -> int -> int -> char -> unit
+    [@@ocaml.deprecated]
 
   end
