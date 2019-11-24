@@ -40,8 +40,6 @@ exception Output_closed
 (* -------------------------------------------------------------- *)
 (* API *)
 
-let default_close = (fun () -> ())
-
 let create_in ~read ~input ~close =
   {
     in_read = read;
@@ -789,7 +787,7 @@ let rec write_bits b ~nbits x =
   end
 
 let flush_bits b =
-  if b.nbits > 0 then write_bits b (8 - b.nbits) 0
+  if b.nbits > 0 then write_bits b ~nbits:(8 - b.nbits) 0
 
 (* -------------------------------------------------------------- *)
 (* Generic IO *)

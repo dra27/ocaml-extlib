@@ -62,7 +62,7 @@ module GetOpt =
 
     let parse other find_short_opt find_long_opt args =
       let rec loop args =
-        let rec gather_args name n args =
+        let gather_args name n args =
           try 
             List.split_nth n args 
           with
@@ -510,7 +510,7 @@ module Formatter =
           | 1 -> '-'
           | _ -> failwith "titled_formatter: Too much indentation"
         in
-        sprintf "%*s%s\n%*s%s\n\n" !indent "" (String.capitalize h) !indent ""
+        sprintf "%*s%s\n%*s%s\n\n" !indent "" (String.capitalize_ascii h) !indent ""
           (String.make (String.length h) c)
       in
       let format_usage usage =

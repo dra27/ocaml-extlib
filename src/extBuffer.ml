@@ -1,5 +1,3 @@
-open ExtBytes
-
 module Buffer = struct
 
   include Buffer

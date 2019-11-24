@@ -21,7 +21,6 @@
 (** Extra functions over hashtables. *)
 
 module Hashtbl :
-  (** The wrapper module *)
   sig
 
   type ('a,'b) t = ('a,'b) Hashtbl.t

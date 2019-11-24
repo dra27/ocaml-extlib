@@ -126,12 +126,14 @@ module String :
   val fold_left : ('a -> char -> 'a) -> 'a -> string -> 'a
     (** [fold_left f a s] is
         [f (... (f (f a s.[0]) s.[1]) ...) s.[n-1]] *)
+
   val fold_right : (char -> 'a -> 'a) -> string -> 'a -> 'a
     (** [fold_right f s b] is
         [f s.[0] (f s.[1] (... (f s.[n-1] b) ...))] *)
 
   val explode : string -> char list
     (** [explode s] returns the list of characters in the string [s]. *)
+
   val implode : char list -> string
     (** [implode cs] returns a string resulting from concatenating
         the characters in the list [cs]. *)

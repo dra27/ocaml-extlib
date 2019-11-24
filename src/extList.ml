@@ -40,11 +40,11 @@ let dummy_node () = { hd = Obj.magic (); tl = [] }
 
 let hd = function
   | [] -> raise Empty_list
-  | h :: t -> h
+  | h :: _ -> h
 
 let tl = function
   | [] -> raise Empty_list
-  | h :: t -> t
+  | _ :: t -> t
 
 let nth l index =
   if index < 0 then raise (Invalid_index index);
@@ -71,7 +71,7 @@ let append l1 l2 =
     loop r t;
     inj r
 
-let rec flatten l =
+let flatten l =
   let rec inner dst = function
     | [] -> dst
     | h :: t ->
@@ -132,7 +132,7 @@ let rec dropwhile f = function
   | xs -> xs
 
 
-let rec unique ?(cmp = ( = )) l =
+let unique ?(cmp = ( = )) l =
   let rec loop dst = function
     | [] -> ()
     | h :: t ->
@@ -305,7 +305,7 @@ let find_all p l =
   findnext dummy l;
   dummy.tl
 
-let rec findi p l =
+let findi p l =
   let rec loop n = function
     | [] -> raise Not_found
     | h :: t ->
@@ -464,7 +464,7 @@ let remove l x =
   loop dummy l;
   dummy.tl
 
-let rec remove_if f lst =
+let remove_if f lst =
   let rec loop dst = function
     | [] -> ()
     | x :: l ->
@@ -479,7 +479,7 @@ let rec remove_if f lst =
   loop dummy lst;
   dummy.tl
 
-let rec remove_all l x =
+let remove_all l x =
   let rec loop dst = function
     | [] -> ()
     | h :: t ->

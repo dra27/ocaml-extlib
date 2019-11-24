@@ -24,7 +24,7 @@ module Hashtbl =
 
 #if OCAML >= 400
   external old_hash_param :
-    int -> int -> 'a -> int = "caml_hash_univ_param" "noalloc"
+    int -> int -> 'a -> int = "caml_hash_univ_param" [@@noalloc]
 #endif
 
   type ('a, 'b) h_bucketlist =
@@ -63,7 +63,7 @@ module Hashtbl =
       let hdata = ref idata in
       let hcount = ref icount in
       let force() =
-        (** this is a hack in order to keep an O(1) enum constructor **)
+        (* this is a hack in order to keep an O(1) enum constructor *)
         if !hcount = -1 then begin
           hcount := (h_conv h).size;
           hdata := Array.copy (h_conv h).data;
