@@ -16,3 +16,5 @@
 /test/extlib_test
 /test/extlib_test.exe
 /test/util/zlib-test/zlib-test
+_build
+src/.merlin

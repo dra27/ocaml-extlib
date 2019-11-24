@@ -5,6 +5,11 @@ let show_bytes s =
 
 let () =
   match Sys.argv with
+  | [|_;"-cppo-dune"|] ->
+    let version = Scanf.sscanf Sys.ocaml_version "%d.%d." (fun major minor -> major * 100 + minor) in
+    printf "-D\nOCAML %d\n" version;
+    print_endline (if Sys.word_size = 32 then "-D\nWORD_SIZE_32 " else "");
+    exit 0
   | [|_;"-cppo-args"|] ->
     let version = Scanf.sscanf Sys.ocaml_version "%d.%d." (fun major minor -> major * 100 + minor) in
     printf "-D \\\"OCAML %d\\\"\n" version;

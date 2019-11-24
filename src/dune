@@ -1,0 +1,13 @@
+(library
+  (name extLib)
+  (public_name extlib)
+  (synopsis "Extended standard library")
+  (libraries stdlib-shims)
+  (wrapped false)
+  (modules :standard \ UTF8 UChar Unzip Install Configure)
+  (preprocess (action (run %{bin:cppo} %{read-lines:cppo.sexp} %{input-file}))))
+
+(rule
+  (with-stdout-to cppo.sexp
+    (with-stderr-to %{null}
+      (run ocaml %{dep:configure.ml} -cppo-dune))))
